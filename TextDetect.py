@@ -3,6 +3,9 @@ from PIL import Image
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+  #Photo Capture
 """
 cap1 = cv2.VideoCapture(0)
 while True:
@@ -31,9 +34,19 @@ name=input("Enter Photo Name:")
 cv2.imwrite(name+'.jpg',img1)
 cap.release()
 """
-img = Image.open("Galib.jpg")
-text = pytesseract.image_to_string(img)
-print(text)
+
+# Detect English
+
+imgEng = Image.open("Card.jpg")
+textEng = pytesseract.image_to_string(imgEng , lang='eng')
+print(textEng)
+
+# Detect Bangla
+print(" **** ")
+
+imgBan = Image.open("Card.jpg")
+textBan = pytesseract.image_to_string(imgBan , lang='ben')
+print(textBan)
 
 
 
